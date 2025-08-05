@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "composite": true,
+    "emitDeclarationOnly": false,
+    "declaration": true,
+    "declarationMap": true,
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022",
+    "preserveValueImports": false,
+    "verbatimModuleSyntax": false,
+    "customConditions": ["development"],
+    "types": ["node"],
+    "outDir": "dist",
+    "rootDir": "src"
+  }
+}

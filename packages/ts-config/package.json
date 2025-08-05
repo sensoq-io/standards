@@ -1,0 +1,35 @@
+{
+  "name": "@sensoq/ts-config",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.esm.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.esm.d.ts",
+  "bin": {
+    "sensoq-tsconfig": "./dist/cli/generate.js"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.esm.d.ts",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./*.json": "./src/*.json",
+    "./cli": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "src/*.json",
+    "src/cli",
+    "!**/*.tsbuildinfo"
+  ],
+  "nx": {
+    "name": "@sensoq/ts-config"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.4"
+  }
+}
