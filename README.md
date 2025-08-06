@@ -1,109 +1,111 @@
-# Sensoq
+# 🎯 Sensoq Standards
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+> **A collection of reusable TypeScript configurations and development standards for modern JavaScript/TypeScript projects**
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+[![Built with Nx](https://img.shields.io/badge/built%20with-Nx-blueviolet)](https://nx.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+---
 
-## Generate a library
+## 📦 Packages
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+### 🔧 [@sensoq/ts-config](./packages/ts-config)
+
+**TypeScript Configuration Templates for Every Project Type**
+
+A powerful CLI tool and library providing battle-tested TypeScript configurations for different project scenarios. Say goodbye to repetitive tsconfig.json setup!
+
+#### ✨ Features
+
+- 🎯 **Multiple Templates**: Pre-configured for different use cases
+- 🚀 **CLI Tool**: Generate configs with a single command
+- 🔄 **Extensible**: Easy to customize and extend
+- 📱 **Modern**: Supports latest TypeScript features
+- 🧪 **Well-Tested**: Comprehensive test coverage
+
+#### 🛠️ Available Templates
+
+| Template       | Description                                              | Use Case                 |
+| -------------- | -------------------------------------------------------- | ------------------------ |
+| `base`         | Foundation TypeScript configuration with strict settings | General purpose projects |
+| `nx-library`   | Nx library with Rollup bundling support                  | Nx monorepo libraries    |
+| `nx-workspace` | Nx workspace/monorepo configuration                      | Nx workspace root        |
+| `vitest`       | Testing configuration for Vitest                         | Test files configuration |
+| `node`         | Node.js applications and libraries                       | Backend/CLI applications |
+
+#### 🚀 Quick Start
+
+```bash
+# Install the package
+npm install @sensoq/ts-config
+
+# Generate a TypeScript config
+npx @sensoq/ts-config generate base
+
+# Generate with custom output
+npx @sensoq/ts-config generate nx-library --output tsconfig.lib.json
+
+# Force overwrite existing file
+npx @sensoq/ts-config generate vitest --force
+
+# Interactive mode for customization
+npx @sensoq/ts-config generate base --interactive
 ```
 
-## Run tasks
+#### 📄 Example Generated Config
 
-To build the library use:
-
-```sh
-npx nx build pkg1
+```json
+{
+  "extends": "@sensoq/ts-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts"]
+}
 ```
 
-To run any task with Nx use:
+#### 🔗 Quick Links
 
-```sh
-npx nx <target> <project-name>
-```
+- 📖 [Full Documentation](./packages/ts-config/README.md)
+- 🎯 [CLI Usage Guide](./packages/ts-config/README.md#cli-usage)
+- 🧪 [Template Examples](./packages/ts-config/src/)
+- 🐛 [Report Issues](https://github.com/sensoq-io/typescript/issues)
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+---
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🛠️ Tools & Extensions
 
-## Versioning and releasing
+- **[Nx Console](https://nx.dev/getting-started/editor-setup)** - VSCode/IntelliJ extension for enhanced DX
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript development
+- **[Vitest](https://vitest.dev/)** - Lightning fast testing framework
+- **[Rollup](https://rollupjs.org/)** - Modern bundler for libraries
 
-To version and release the library use
+### TypeScript Resources
 
-```
-npx nx release
-```
+- 📖 [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- 🔧 [TSConfig Reference](https://www.typescriptlang.org/tsconfig)
+- 🎯 [TypeScript Best Practices](https://www.typescriptlang.org/docs/handbook/best-practices.html)
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+---
 
-[Learn more about Nx release &raquo;](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🤝 Contributing
 
-## Keep TypeScript project references up to date
+We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+## 📄 License
 
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-```sh
-npx nx sync
-```
+---
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
-
-```sh
-npx nx sync:check
-```
-
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+<div align="center">
+  <p>Made with ❤️ by the Sensoq team</p>
+  <p>
+    <a href="https://github.com/sensoq-io">GitHub</a> •
+    <a href="https://github.com/sensoq-io/typescript/issues">Issues</a> •
+    <a href="https://github.com/sensoq-io/typescript/discussions">Discussions</a>
+  </p>
+</div>
