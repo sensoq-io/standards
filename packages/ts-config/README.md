@@ -24,10 +24,10 @@ npx @sensoq/ts-config generate --help
 
 ### � Manual Installation
 
-Install the package:
+Install the package as a dev dependency:
 
 ```bash
-npm install @sensoq/ts-config
+npm install -D @sensoq/ts-config
 ```
 
 Then extend the configs in your project:

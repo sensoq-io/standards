@@ -1,10 +1,36 @@
 {
   "name": "@sensoq/ts-config",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "description": "TypeScript configuration templates for every project type - a powerful CLI tool and library providing battle-tested TypeScript configurations",
   "type": "module",
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/index.esm.d.ts",
+  "author": "Sensoq Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sensoq-io/standards.git",
+    "directory": "packages/ts-config"
+  },
+  "bugs": {
+    "url": "https://github.com/sensoq-io/standards/issues"
+  },
+  "homepage": "https://github.com/sensoq-io/standards/tree/main/packages/ts-config#readme",
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "configuration",
+    "cli",
+    "templates",
+    "nodejs",
+    "vitest",
+    "rollup",
+    "monorepo"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "bin": {
     "sensoq-tsconfig": "./dist/cli/generate.js"
   },
@@ -21,9 +47,7 @@
   },
   "files": [
     "dist",
-    "src/*.json",
-    "src/cli",
-    "!**/*.tsbuildinfo"
+    "src/*.json"
   ],
   "nx": {
     "name": "@sensoq/ts-config"
@@ -31,5 +55,8 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
